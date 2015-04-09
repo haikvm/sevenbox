@@ -9,13 +9,25 @@
 		draggable: true,
 		color: '#FFFFFF',
 		ajax: false,
-		transparent: false
+		transparent: false,
+		headerHeight: 40,
+		footerHeight: 40,
+		buttons: {
+			ok: {
+				name: 'Ok',
+				position: 'center',
+				callback: function() {
+					$.sevenbox.destroy()
+				}
+			}
+		}
 	},
 	
+	// Vars
 	options,
 	settings,
 	sevenbox = 'sevenbox',
-	prefix = 'sbox',
+	prefix = 'jqsevenbox',
 	div = 'div',
 	
 	inited,
@@ -86,21 +98,20 @@
 			$window = $(window);
 			$bodyContent = $('body').html();
 			$overlay = $tag(div, 'overlay');
-			console.log($overlay);
-			$box = $tag(div, 'blur_overlay').append(
-				$body = $tag(div, 'blur_window').html($bodyContent).css({
+			$box = $tag(div, 'box').append(
+				$body = $tag(div, 'window').html($bodyContent).css({
 				   'filter'         : 'blur('+settings.get('blur')+'px)',
 				   '-webkit-filter' : 'blur('+settings.get('blur')+'px)',
 				   '-moz-filter'    : 'blur('+settings.get('blur')+'px)',
 				   '-o-filter'      : 'blur('+settings.get('blur')+'px)',
 				   '-ms-filter'     : 'blur('+settings.get('blur')+'px)',
 				}),
-				$tag(div, 'blur_bg').css('backgroundColor', settings.get('color')),
-				$border = $tag(div, 'blur_overlay_border').css({
+				$tag(div, 'bg').css('backgroundColor', settings.get('color')),
+				$border = $tag(div, 'overlay_border').css({
 					width: settings.get('width')-2,
 					height: settings.get('height')-2,
 				}),
-				$content = $tag(div, 'blur_overlay_content')				
+				$content = $tag(div, 'overlay_content')				
 			).css({
 				opacity: 0,
 				width: settings.get('width'),

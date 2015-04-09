@@ -8,7 +8,7 @@
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 <link href="css/default.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/jquery.sevenbox.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
 </head>
@@ -70,10 +70,12 @@
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="js/jquery.sevenbox.js"></script>
 <script>
-	$('.sbox').sevenbox({
-		width: 700,
-		height: 400,
-		transparent: true
+	$().ready(function() {
+		$('.sbox').sevenbox({
+			width: 700,
+			height: 400,
+			transparent: true
+		});
 	});
 </script>
 </body>

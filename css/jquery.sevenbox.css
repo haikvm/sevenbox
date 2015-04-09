@@ -1,4 +1,4 @@
-#sbox_overlay {
+#jqsevenbox_overlay {
 	z-index:9999;
 	position:fixed;
 	top:0;
@@ -7,7 +7,7 @@
 	height:100%;
 	background-color:rgba(0,0,0,0);
 }
-#sbox_blur_overlay {
+#jqsevenbox_box {
 	z-index:10000;
     background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.6);
@@ -18,26 +18,26 @@
     position: fixed;
     top: 50%;
 }
-#sbox_blur_window {
+#jqsevenbox_window {
     height: 100%;
     opacity: 0.95;
     position: absolute;
 }
-#sbox_blur_bg {
+#jqsevenbox_bg {
 	background: none repeat scroll 0 0 #000;
 	height: 100%;
 	opacity: 0.1;
 	position: absolute;
 	width: 100%;
 }
-#sbox_blur_overlay_border {
+#jqsevenbox_overlay_border {
 	border: 2px solid rgba(255, 255, 255, 0.6);
 	border-radius: 4px;
 	left: -1px;
 	position: absolute;
 	top: -1px;
 }
-#sbox_blur_overlay_content {
+#jqsevenbox_overlay_content {
     background: none repeat scroll 0 0 white;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 2px;
