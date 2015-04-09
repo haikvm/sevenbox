@@ -164,6 +164,10 @@
 						stop: function() {
 							$box.animate({'opacity': 1},100);
 							$body.fadeIn('fast');
+							$border.css({
+								width: settings.get('width')-2,
+								height: settings.get('height')-2,
+							});
 							bodyPosition($body, $box);
 						}
 					});
