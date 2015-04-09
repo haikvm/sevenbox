@@ -9,6 +9,7 @@
 		draggable: true,
 		color: '#FFFFFF',
 		ajax: false,
+		transparent: false
 	},
 	
 	options,
@@ -70,20 +71,22 @@
 	function bodyPosition(body, box) {
 		$width = $(window).width();
 		$height = winheight();
-		$left = -(box.position().left - settings.get('width')/2);
-		$top = -(box.position().top - settings.get('height')/2);
-		body.css({
+		$left = -(box.offset().left);
+		$top = -(box.offset().top);
+		var position = {
 			top			: $top-1,
 			left		: $left-1,
-			width		: $width
-		});
-		
+			width		: $width,
+			height		: $height
+		}
+		body.css(position);
 	}
 	function init(el) {
 		if (!$box) {
 			$window = $(window);
 			$bodyContent = $('body').html();
-			$overlay = $tag(div, 'overlay').hide();
+			$overlay = $tag(div, 'overlay');
+			console.log($overlay);
 			$box = $tag(div, 'blur_overlay').append(
 				$body = $tag(div, 'blur_window').html($bodyContent).css({
 				   'filter'         : 'blur('+settings.get('blur')+'px)',
@@ -97,8 +100,7 @@
 					width: settings.get('width')-2,
 					height: settings.get('height')-2,
 				}),
-				$content = $tag(div, 'blur_overlay_content')
-				
+				$content = $tag(div, 'blur_overlay_content')				
 			).css({
 				opacity: 0,
 				width: settings.get('width'),
@@ -106,6 +108,12 @@
 				marginLeft: -settings.get('width')/2,
 				marginTop: -settings.get('height')/2
 			});
+			if (settings.get('transparent')) {
+				$content.css({
+					background	: 'none',
+					border		: 'none'
+				});
+			}
 			if (document.body && !$box.parent().length) {
 				$(document.body).append($overlay, $box);
 				bodyPosition($body, $box);
@@ -126,9 +134,10 @@
 				$box.animate({
 					opacity: 1
 				}, 200);
-				$overlay.fadeIn();
+				$overlay.show();
 				$(window).scroll(function() {
 					bodyPosition($body, $box);
+					console.log('1');
 				});
 				$(window).resize(function() {
 					bodyPosition($body, $box);
@@ -191,12 +200,11 @@
 	publicMethod.settings = defaults;
 	
 	publicMethod.destroy = function() {
-		$overlay.fadeOut(function() {
-			$(this).remove();
-		});
+		$overlay.remove();
 		$box.fadeOut(function() {
 			$(this).remove();
-			$box = false;
+			$box = null;
+			$overlay = null;
 		});
 	}
 	publicMethod.open = function() {
