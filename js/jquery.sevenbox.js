@@ -15,6 +15,7 @@
 		blur: 3,
 		draggable: true,
 		resizable: false,
+		position: 'fixed',
 		color: '#FFFFFF',
 		ajax: false,
 		transparent: false,
@@ -117,17 +118,15 @@
 				   '-ms-filter'     : 'blur('+settings.get('blur')+'px)',
 				}),
 				$tag(div, 'bg').css('backgroundColor', settings.get('color')),
-				$border = $tag(div, 'overlay_border').css({
-					width: settings.get('width')-2,
-					height: settings.get('height')-2,
-				}),
+				$border = $tag(div, 'overlay_border'),
 				$content = $tag(div, 'overlay_content')				
 			).css({
-				opacity: 0,
-				width: settings.get('width'),
-				height: settings.get('height'),
-				marginLeft: -settings.get('width')/2,
-				marginTop: -settings.get('height')/2
+				opacity			: 0,
+				width			: settings.get('width'),
+				height			: settings.get('height'),
+				marginLeft		: -settings.get('width')/2,
+				marginTop		: -settings.get('height')/2,
+				position		: settings.get('position')
 			});
 			if (settings.get('close')) {
 				$box.append($close = $tag(div, 'close'));
@@ -164,10 +163,6 @@
 						stop: function() {
 							$box.animate({'opacity': 1},100);
 							$body.fadeIn('fast');
-							$border.css({
-								width: settings.get('width')-2,
-								height: settings.get('height')-2,
-							});
 							bodyPosition($body, $box);
 						}
 					});

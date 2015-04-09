@@ -33,8 +33,10 @@
 #jqsevenbox_overlay_border {
 	border: 2px solid rgba(255, 255, 255, 0.6);
 	border-radius: 4px;
+	bottom: -1px;
 	left: -1px;
 	position: absolute;
+	right: -1px;
 	top: -1px;
 }
 #jqsevenbox_overlay_content {
