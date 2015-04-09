@@ -62,3 +62,10 @@
 #jqsevenbox_close:hover {
 	opacity:0.5
 }
+.ui-resizable-handle.ui-icon {
+	bottom: 0;
+	height: 16px;
+	position: absolute;
+	right: 0;
+	width: 16px;
+}
