@@ -20,7 +20,8 @@
 					$.sevenbox.destroy()
 				}
 			}
-		}
+		},
+		close: true
 	},
 	
 	// Vars
@@ -36,6 +37,7 @@
 	$width,
 	$height,
 	$left,
+	$close,
 	$top;
 	
 	function $tag(tag, id, css) {
@@ -119,6 +121,9 @@
 				marginLeft: -settings.get('width')/2,
 				marginTop: -settings.get('height')/2
 			});
+			if (settings.get('close')) {
+				$box.append($close = $tag(div, 'close'));
+			}
 			if (settings.get('transparent')) {
 				$content.css({
 					background	: 'none',
