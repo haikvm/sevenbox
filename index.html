@@ -70,11 +70,17 @@
 <script src="js/jquery.sevenbox.js"></script>
 <script>
 	$().ready(function() {
-		$('.sbox').sevenbox({
+		sbox = $('.sbox').sevenbox({
 			width: 700,
 			height: 400,
 			transparent: true,
 			resizable: true,
+			beforeOpen: function() {
+				console.log('Start');
+			},
+			color: 'gold'
+		}, function() {
+			console.log('End');
 		});
 	});
 </script>
