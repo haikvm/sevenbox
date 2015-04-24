@@ -13,10 +13,8 @@
     border: 1px solid rgba(0, 0, 0, 0.6);
     border-radius: 4px;
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
-    left: 50%;
     overflow: hidden;
     position: fixed;
-    top: 50%;
 }
 #jqsevenbox_window {
     height: 100%;

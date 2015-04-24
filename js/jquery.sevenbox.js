@@ -15,6 +15,7 @@
 		draggable: true,
 		resizable: false,
 		position: 'fixed',
+		align: 'center',
 		color: '#FFFFFF',
 		ajax: false,
 		transparent: false,
@@ -161,12 +162,47 @@
 				opacity			: 0,
 				width			: settings.get('width'),
 				height			: settings.get('height'),
-				marginLeft		: -settings.get('width')/2,
-				marginTop		: -settings.get('height')/2,
 				position		: settings.get('position')
 			});
+			switch (settings.get('align')) {
+				case 'center':
+					$box.css({
+						top				: '50%',
+						left			: '50%',
+						marginLeft		: -settings.get('width')/2,
+						marginTop		: -settings.get('height')/2,
+					});
+				break;
+				case 'lt':
+					$box.css({
+						top				: 20,
+						left			: 20,
+					});
+				break;
+				case 'rt':
+					$box.css({
+						top				: 20,
+						right			: 20,
+					});
+				break;
+				case 'lb':
+					$box.css({
+						bottom			: 20,
+						left			: 20,
+					});
+				break;
+				case 'rb':
+					$box.css({
+						bottom			: 20,
+						right			: 20,
+					});
+				break;
+			};
 			if (settings.get('close')) {
 				$box.append($close = $tag(div, 'close'));
+				$close.click(function() {
+					destroy();
+				});
 			}
 			if (settings.get('transparent')) {
 				$content.css({
